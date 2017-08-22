@@ -18,13 +18,13 @@
             <v-list-tile-action>
               <v-icon>lock_open</v-icon>
             </v-list-tile-action>
-            <v-list-tile-contenct>Sign In</v-list-tile-contenct>
+            <v-list-tile-content>Sign In</v-list-tile-content>
           </v-list-tile>
           <v-list-tile>
             <v-list-tile-action>
               <v-icon>face</v-icon>
             </v-list-tile-action>
-            <v-list-tile-contenct>Sign Up</v-list-tile-contenct>
+            <v-list-tile-content>Sign Up</v-list-tile-content>
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
@@ -43,9 +43,11 @@
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
-
-      <%= yield %>
-
+      <main>
+        <v-container>
+          <%= yield %>
+        </v-container>
+      </main>
     </v-app>
   </body>
 </html>

@@ -10,6 +10,7 @@ import TurbolinksAdapter from 'vue-turbolinks'
 import VueResource from 'vue-resource'
 
 import MainHeader from './layout/vue-header.vue'
+import UserSignup from './devise/vue-signup.vue'
 
 Vue.use(VueResource)
 Vue.use(Vuetify)
@@ -26,7 +27,8 @@ document.addEventListener('turbolinks:load', () => {
             console.log('main vue created')
         },
         components: {
-            'main-header' : MainHeader
+            'main-header' : MainHeader,
+            'vue-signup' : UserSignup
         }
     })
 })
