@@ -12,6 +12,7 @@ import VueResource from 'vue-resource'
 import MainHeader from './layout/vue-header.vue'
 import UserSignup from './devise/vue-signup.vue'
 import UserSignin from './devise/vue-signin.vue'
+import VueAlert from './layout/vue-alert.vue'
 
 Vue.use(VueResource)
 Vue.use(Vuetify)
@@ -22,15 +23,28 @@ document.addEventListener('turbolinks:load', () => {
     var app = new Vue({
         el: element,
         data: {
-            sideNav: false
+            sideNav: false,
+            errors: ['this is an error', 'this is the second issue']
+        },
+        methods: {
+            onDismissed(index) {
+                console.log('dismissed alert')
+                this.errors.splice(index, 1)
+            }
         },
         created: function () {
             console.log('main vue created')
         },
+        /*computed: {
+            errors() {
+                return (errors !== null)
+            }
+        },*/
         components: {
             'main-header' : MainHeader,
             'vue-signup' : UserSignup,
-            'vue-signin' : UserSignin
+            'vue-signin' : UserSignin,
+            'vue-alert' : VueAlert
         }
     })
 })

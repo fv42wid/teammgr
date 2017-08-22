@@ -10,6 +10,7 @@
                                           id="email"
                                           v-model="user.email"
                                           type="email"
+                                          :disabled="loading"
                                           required></v-text-field>
 
                         </v-flex>
@@ -21,6 +22,7 @@
                                           id="password"
                                           v-model="user.password"
                                           type="password"
+                                          :disabled="loading"
                                           required></v-text-field>
                         </v-flex>
                     </v-layout>
@@ -31,6 +33,7 @@
                                           id="password_confirmation"
                                           v-model="user.password_confirmation"
                                           type="password"
+                                          :disabled="loading"
                                           :rules="[comparePasswords]"></v-text-field>
                         </v-flex>
                     </v-layout>
@@ -56,17 +59,22 @@
                 },
                 csrf_token: '',
                 utf8: '',
-                authenticity_token: ''
+                authenticity_token: '',
+                loading: false,
+                errors: null
             }
         },
         methods: {
             signUp() {
+                this.loading = true
                 this.$http.post('/users', { utf8: this.utf8, authenticity_token: this.authenticity_token, user: this.user}).then(
                     response => {
                         console.log(response)
+                        this.loading = false
                         Turbolinks.visit('/employees')
                     }, response => {
                         console.log(response)
+                        this.loading = false
                     }
                 )
             }
@@ -74,6 +82,9 @@
         computed: {
             comparePasswords() {
                 return this.user.password !== this.user.password_confirmation ? 'Passwords do not match' : ''
+            },
+            error() {
+                return this.errors
             }
         },
         created: function() {
