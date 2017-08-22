@@ -14,13 +14,13 @@
     <v-app id="main-app">
       <v-navigation-drawer temporary v-model="sideNav">
         <v-list>
-          <v-list-tile>
+          <v-list-tile href="<%= new_user_session_path %>">
             <v-list-tile-action>
               <v-icon>lock_open</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>Sign In</v-list-tile-content>
           </v-list-tile>
-          <v-list-tile>
+          <v-list-tile  href="<%= new_user_registration_path %>">
             <v-list-tile-action>
               <v-icon>face</v-icon>
             </v-list-tile-action>
@@ -33,11 +33,11 @@
         <v-toolbar-title>tm-mgr</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-xs-only">
-          <v-btn flat>
+          <v-btn flat href="<%= new_user_session_path %>">
             <v-icon left>lock_open</v-icon>
             Sign In
           </v-btn>
-          <v-btn flat>
+          <v-btn flat href="<%= new_user_registration_path %>">
             <v-icon left>face</v-icon>
             Sign Up
           </v-btn>
