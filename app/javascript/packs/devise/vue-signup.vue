@@ -53,12 +53,22 @@
                     email: '',
                     password: '',
                     password_confirmation: ''
-                }
+                },
+                csrf_token: '',
+                utf8: '',
+                authenticity_token: ''
             }
         },
         methods: {
             signUp() {
-
+                this.$http.post('/users', { utf8: this.utf8, authenticity_token: this.authenticity_token, user: this.user}).then(
+                    response => {
+                        console.log(response)
+                        Turbolinks.visit('/employees')
+                    }, response => {
+                        console.log(response)
+                    }
+                )
             }
         },
         computed: {
@@ -67,6 +77,9 @@
             }
         },
         created: function() {
+            this.csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            this.utf8 = document.getElementsByName('utf8')[0].getAttribute('value')
+            this.authenticity_token = document.getElementsByName('authenticity_token')[0].getAttribute('value')
             console.log('user signup created')
         }
     }
