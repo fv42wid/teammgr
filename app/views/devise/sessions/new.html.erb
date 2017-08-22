@@ -1,7 +1,12 @@
-<h2>Log in</h2>
-
+<v-layout row>
+  <v-flex xs12 sm6 offset-sm3>
+    <h2>Log In</h2>
+    <vue-signin></vue-signin>
+    <%= render "devise/shared/links" %>
+  </v-flex>
+</v-layout>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <!--<div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -20,7 +25,7 @@
 
   <div class="actions">
     <%= f.submit "Log in" %>
-  </div>
+  </div>-->
 <% end %>
 
-<%= render "devise/shared/links" %>
+

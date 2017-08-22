@@ -11,6 +11,7 @@ import VueResource from 'vue-resource'
 
 import MainHeader from './layout/vue-header.vue'
 import UserSignup from './devise/vue-signup.vue'
+import UserSignin from './devise/vue-signin.vue'
 
 Vue.use(VueResource)
 Vue.use(Vuetify)
@@ -28,7 +29,8 @@ document.addEventListener('turbolinks:load', () => {
         },
         components: {
             'main-header' : MainHeader,
-            'vue-signup' : UserSignup
+            'vue-signup' : UserSignup,
+            'vue-signin' : UserSignin
         }
     })
 })
