@@ -69,7 +69,9 @@
                         Turbolinks.visit('/employees')
                     }, response => {
                         console.log(response.body.error)
+                        this.errors.push(response.body.error)
                         this.loading = false
+                        this.$emit('update:errors', this.errors)
                     }
                 )
             }
