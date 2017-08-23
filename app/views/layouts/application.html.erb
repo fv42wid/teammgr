@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <%= content_tag :div, id: "flash-div", data: {flash: flash.notice} do %>
+    <% end %>
     <v-app id="main-app">
       <v-navigation-drawer temporary v-model="sideNav">
         <v-list>
@@ -71,7 +73,7 @@
         </v-toolbar-items>
       </v-toolbar>
       <main>
-        <%= debug flash %>
+
         <v-container>
 
           <%= yield %>

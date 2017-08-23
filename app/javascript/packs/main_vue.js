@@ -32,10 +32,12 @@ document.addEventListener('turbolinks:load', () => {
             onDismissed(index) {
                 console.log('dismissed alert')
                 this.errors.splice(index, 1)
+
             }
         },
         created: function () {
             console.log('main vue created')
+            this.success = document.getElementById('flash-div').getAttribute('data-flash')
         },
         /*computed: {
             errors() {

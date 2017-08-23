@@ -1,9 +1,8 @@
 <template>
-    <v-snackbar
-                :timeout="timeout"
-                :info="true"
+    <v-snackbar :info="true"
                 :right="true"
-                v-model="show">
+                v-model="show"
+                :timeout="timeout">
         {{ message }}
         <v-btn dark flat @click="snackbar = false">Close</v-btn>
     </v-snackbar>
@@ -16,7 +15,7 @@
             return {
                 timeout: 3000,
                 x: 'right',
-                show: false
+                show: this.snackbar
             }
         },
         watch: {
