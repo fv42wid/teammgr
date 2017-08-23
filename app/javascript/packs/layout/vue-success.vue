@@ -4,7 +4,7 @@
                 v-model="show"
                 :timeout="timeout">
         {{ message }}
-        <v-btn dark flat @click="snackbar = false">Close</v-btn>
+        <v-btn dark flat @click="show = false">Close</v-btn>
     </v-snackbar>
 </template>
 
