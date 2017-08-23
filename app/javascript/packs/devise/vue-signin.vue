@@ -10,6 +10,7 @@
                                           v-model="user.email"
                                           type="email"
                                           placeholder="Email"
+                                          :disabled="loading"
                                           required></v-text-field>
                         </v-flex>
                     </v-layout>
@@ -19,12 +20,22 @@
                                           id="password"
                                           v-model="user.password"
                                           type="password"
+                                          :disabled="loading"
                                           placeholder="Password"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
                         <v-flex xs12>
-                            <v-btn type="submit" primary>Sign In</v-btn>
+                            <v-btn type="submit"
+                                   :disabled="loading"
+                                   :loading="loading"
+                                   @click="loader = 'loading'"
+                                   primary>
+                                Sign In
+                                <span slot="loader" class="custom-loader">
+                                    <v-icon primary>cached</v-icon>
+                                </span>
+                            </v-btn>
                         </v-flex>
                     </v-layout>
                 </form>
@@ -43,17 +54,22 @@
                     remember_me: false
                 },
                 utf8: '',
-                authenticity_token: ''
+                authenticity_token: '',
+                loading: false,
+                errors: []
             }
         },
         methods: {
             signIn() {
+                this.loading = true;
                 this.$http.post('/users/sign_in', { utf8: this.utf8, authenticity_token: this.authenticity_token, user: this.user }).then(
                     response => {
                         console.log(response)
+                        this.loading = false
                         Turbolinks.visit('/employees')
                     }, response => {
-                        console.log(response)
+                        console.log(response.body.error)
+                        this.loading = false
                     }
                 )
             }
