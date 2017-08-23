@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {minimum: 3}
   validates :password, presence: true
 
+  has_many :employees
+
 end
