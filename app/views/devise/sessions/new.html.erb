@@ -6,7 +6,7 @@
         <vue-alert @alertdismissed="onDismissed(index)" :error="error"></vue-alert>
       </v-flex>
     </v-layout>
-    <vue-signin :errors.sync="errors"></vue-signin>
+    <vue-signin :errors.sync="errors" :success.sync="success"></vue-signin>
     <%= render "devise/shared/links" %>
   </v-flex>
 </v-layout>

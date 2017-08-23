@@ -13,6 +13,7 @@ import MainHeader from './layout/vue-header.vue'
 import UserSignup from './devise/vue-signup.vue'
 import UserSignin from './devise/vue-signin.vue'
 import VueAlert from './layout/vue-alert.vue'
+import VueSuccess from './layout/vue-success.vue'
 
 Vue.use(VueResource)
 Vue.use(Vuetify)
@@ -24,7 +25,8 @@ document.addEventListener('turbolinks:load', () => {
         el: element,
         data: {
             sideNav: false,
-            errors: []
+            errors: [],
+            success: null
         },
         methods: {
             onDismissed(index) {
@@ -44,7 +46,8 @@ document.addEventListener('turbolinks:load', () => {
             'main-header' : MainHeader,
             'vue-signup' : UserSignup,
             'vue-signin' : UserSignin,
-            'vue-alert' : VueAlert
+            'vue-alert' : VueAlert,
+            'vue-success' : VueSuccess
         }
     })
 })

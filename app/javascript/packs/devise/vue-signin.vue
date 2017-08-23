@@ -66,7 +66,9 @@
                     response => {
                         console.log(response)
                         this.loading = false
+                        this.$emit('update:success', 'Signed in!')
                         Turbolinks.visit('/employees')
+
                     }, response => {
                         console.log(response.body.error)
                         this.errors.push(response.body.error)

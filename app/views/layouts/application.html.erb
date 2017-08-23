@@ -71,11 +71,13 @@
         </v-toolbar-items>
       </v-toolbar>
       <main>
+        <%= debug flash %>
         <v-container>
 
           <%= yield %>
         </v-container>
       </main>
+      <vue-success :message="success" :snackbar="success !== null"></vue-success>
     </v-app>
   </body>
 </html>
