@@ -61,7 +61,7 @@
                 utf8: '',
                 authenticity_token: '',
                 loading: false,
-                errors: null
+                errors: []
             }
         },
         methods: {
@@ -73,8 +73,19 @@
                         this.loading = false
                         Turbolinks.visit('/employees')
                     }, response => {
-                        console.log(response)
+                        console.log(response.body.errors)
                         this.loading = false
+
+                        for(var field in response.body.errors) {
+                            console.log(response.body.errors[field])
+
+                            for(var message in response.body.errors[field]){
+                                console.log(field + ' ' + response.body.errors[field][message])
+                                this.errors.push(field + ' ' + response.body.errors[field][message])
+                            }
+                        }
+                        this.$emit('update:errors', this.errors)
+
                     }
                 )
             }

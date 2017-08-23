@@ -19,6 +19,7 @@
         props: ['error'],
         created: function() {
             console.log('alert created')
+            console.log(error)
         }
     }
 </script>

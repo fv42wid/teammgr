@@ -1,7 +1,14 @@
 <v-layout row>
   <v-flex xs12 sm6 offset-sm3>
     <h2>Sign up</h2>
-    <vue-signup></vue-signup>
+
+    <v-layout row v-for="(error, index) in errors" :key="index">
+      <v-flex xs12>
+        <vue-alert @alertdismissed="onDismissed(index)" :error="error"></vue-alert>
+      </v-flex>
+    </v-layout>
+
+    <vue-signup :errors.sync="errors"></vue-signup>
     <%= render "devise/shared/links" %>
   </v-flex>
 </v-layout>

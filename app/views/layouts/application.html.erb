@@ -70,12 +70,6 @@
           <% end %>
         </v-toolbar-items>
       </v-toolbar>
-      <%= debug flash %>
-      <v-layout row v-for="(error, index) in errors" :key="index">
-        <v-flex xs12>
-          <vue-alert @alertdismissed="onDismissed(index)" :error="error"></vue-alert>
-        </v-flex>
-      </v-layout>
       <main>
         <v-container>
 

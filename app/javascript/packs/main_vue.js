@@ -24,7 +24,7 @@ document.addEventListener('turbolinks:load', () => {
         el: element,
         data: {
             sideNav: false,
-            errors: ['this is an error', 'this is the second issue']
+            errors: []
         },
         methods: {
             onDismissed(index) {
