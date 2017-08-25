@@ -12,6 +12,7 @@
                     <v-btn flat class="orange--text" @click="createAssignment()">Create Assignment</v-btn>
                 </v-card-actions>
                 <v-card-text v-if="creatingAssignment">
+                    <h6>Create Assignment</h6>
                     <new-assignment></new-assignment>
                 </v-card-text>
             </v-card>
