@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: MyString
+  allocation_percentage: 1.5
+  project_frequency: MyString
+  start_date: 2017-08-25 09:42:21
+  end_date: 
+  employee_id: 1
+  user_id: 1
+
+two:
+  project: MyString
+  allocation_percentage: 1.5
+  project_frequency: MyString
+  start_date: 2017-08-25 09:42:21
+  end_date: 
+  employee_id: 1
+  user_id: 1
