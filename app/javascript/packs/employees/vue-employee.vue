@@ -13,7 +13,7 @@
                 </v-card-actions>
                 <v-card-text v-if="creatingAssignment">
                     <h6>Create Assignment</h6>
-                    <new-assignment></new-assignment>
+                    <new-assignment :employee="employee.id"></new-assignment>
                 </v-card-text>
             </v-card>
         </v-flex>

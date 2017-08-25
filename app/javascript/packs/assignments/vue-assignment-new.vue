@@ -24,13 +24,13 @@
                             <v-text-field slot="activator"
                                           label="Start Date"
                                           id="start-date"
-                                          v-model="assignment.startDate"
+                                          v-model="assignment.start_date"
                                           prepend-icon="event"
                                           readonly
                                           required></v-text-field>
                             <v-date-picker no-title
                                            scrollable
-                                           v-model="assignment.startDate"
+                                           v-model="assignment.start_date"
                                            actions>
                                 <template scope="{save, cancel}">
                                     <v-card-actions>
@@ -53,13 +53,13 @@
                             <v-text-field slot="activator"
                                           label="End Date"
                                           id="end-date"
-                                          v-model="assignment.endDate"
+                                          v-model="assignment.end_date"
                                           prepend-icon="event"
                                           readonly
                                           required></v-text-field>
                             <v-date-picker no-title
                                            scrollable
-                                           v-model="assignment.endDate"
+                                           v-model="assignment.end_date"
                                            actions>
                                 <template scope="{save, cancel}">
                                     <v-card-actions>
@@ -76,11 +76,12 @@
                         <v-text-field name="allocation"
                                       label="Allocation"
                                       type="number"
+                                      v-model="assignment.allocation_percentage"
                                       suffix="%"></v-text-field>
                     </v-flex>
                     <v-flex xs6>
                         <v-select :items="frequencies"
-                                  v-model="assignment.frequency"
+                                  v-model="assignment.project_frequency"
                                   label="Select Frequency"
                                   autocomplete></v-select>
                     </v-flex>
@@ -100,25 +101,36 @@
         data: function() {
             return {
                 assignment: {
-                    employee_id: null,
-                    user_id: null,
+                    employee_id: this.employee,
                     project: '',
-                    allocation: '',
-                    frequency: '',
-                    startDate: '',
-                    endDate: ''
+                    allocation_percentage: '',
+                    project_frequency: '',
+                    start_date: '',
+                    end_date: ''
                 },
                 startdateMenu: true,
                 enddateMenu: false,
-                frequencies: ['Weekly', 'Monthly']
+                frequencies: ['Weekly', 'Monthly'],
+                utf8: '',
+                authenticity_token: ''
             }
         },
+        props: ['employee'],
         methods: {
             submitAssignment() {
+                this.$http.post('/assignments', {utf8: this.utf8, authenticity_token: this.authenticity_token, assignment: this.assignment}).then(
+                    response => {
+                        console.log(response)
+                    }, response => {
+                        console.log(response)
+                    }
+                )
                 console.log(this.assignment)
             }
         },
         created() {
+            this.utf8 = document.getElementsByName('utf8')[0].getAttribute('value')
+            this.authenticity_token = document.getElementsByName('authenticity_token')[0].getAttribute('value')
             console.log('new assignment create')
         }
     }
