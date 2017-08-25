@@ -6,7 +6,8 @@
         <vue-alert @alertdismissed="onDismissed(index)" :error="error"></vue-alert>
       </v-flex>
     </v-layout>
-
-
   </v-flex>
 </v-layout>
+<% @employees.each do |employee| %>
+    <employee-card card="<%= employee.to_json %>"></employee-card>
+<% end %>

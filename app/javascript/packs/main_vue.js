@@ -14,6 +14,7 @@ import UserSignup from './devise/vue-signup.vue'
 import UserSignin from './devise/vue-signin.vue'
 import VueAlert from './layout/vue-alert.vue'
 import VueSuccess from './layout/vue-success.vue'
+import EmployeeCard from './employees/vue-employee.vue'
 
 Vue.use(VueResource)
 Vue.use(Vuetify)
@@ -49,7 +50,8 @@ document.addEventListener('turbolinks:load', () => {
             'vue-signup' : UserSignup,
             'vue-signin' : UserSignin,
             'vue-alert' : VueAlert,
-            'vue-success' : VueSuccess
+            'vue-success' : VueSuccess,
+            'employee-card' : EmployeeCard
         }
     })
 })
