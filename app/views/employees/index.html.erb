@@ -9,7 +9,7 @@
   </v-flex>
 </v-layout>
 <% @employees.each do |employee| %>
-    <employee-card card="<%= employee.to_json %>"></employee-card>
+    <employee-card card="<%= employee.to_json %>" empassignments="<%= employee.assignments.to_json %>"></employee-card>
 <% end %>
 <%= form_for(Employee.new) do |f| %>
 <% end %>

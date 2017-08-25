@@ -27,12 +27,14 @@
         data: function() {
             return {
                 employee: JSON.parse(this.card),
+                assignments: JSON.parse(this.empassignments),
                 creatingAssignment: false
             }
         },
-        props: ['card'],
+        props: ['card', 'empassignments'],
         mounted() {
             console.log(this.employee + ' created')
+            console.log(this.assignments)
         },
         methods: {
             createAssignment() {

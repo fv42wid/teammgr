@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
 
   def index
-    @employees = Employee.all
+    @employees = Employee.includes(:assignments)
   end
 
   def show
