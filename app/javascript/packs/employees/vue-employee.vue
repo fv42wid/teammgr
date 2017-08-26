@@ -14,7 +14,7 @@
                 </v-card-actions>
                 <v-card-text v-if="creatingAssignment">
                     <h6>Create Assignment</h6>
-                    <new-assignment :employee="employee.id"></new-assignment>
+                    <new-assignment :employee="employee.id" @addAssignment="addAssignment"></new-assignment>
                 </v-card-text>
                 <v-card-text v-if="showAssignments">
                     <v-list two-line>
@@ -60,6 +60,10 @@
             createAssignment() {
                 console.log('create assignment')
                 this.creatingAssignment = !this.creatingAssignment
+            },
+            addAssignment(assignment) {
+                this.assignments.push(assignment)
+                this.creatingAssignment = false
             }
         },
         components: {

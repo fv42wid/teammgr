@@ -120,6 +120,7 @@
             submitAssignment() {
                 this.$http.post('/assignments', {utf8: this.utf8, authenticity_token: this.authenticity_token, assignment: this.assignment}).then(
                     response => {
+                        this.$emit('addAssignment', this.assignment)
                         console.log(response)
                     }, response => {
                         console.log(response)
