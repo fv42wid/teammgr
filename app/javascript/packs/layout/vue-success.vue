@@ -13,7 +13,7 @@
         props: ['message', 'snackbar'],
         data: function() {
             return {
-                timeout: 3000,
+                timeout: 6000,
                 x: 'right',
                 show: this.snackbar
             }

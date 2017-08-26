@@ -3,7 +3,7 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = current_user.assignments.new(assignment_params)
     if @assignment.save
-      flash[:notice] = "#{@assignment.project} created!"
+      #flash[:notice] = "#{@assignment.project} created!"
     else
       flash[:error] = "error saving!"
     end

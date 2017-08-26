@@ -64,6 +64,7 @@
             addAssignment(assignment) {
                 this.assignments.push(assignment)
                 this.creatingAssignment = false
+                this.$emit('addsuccess', assignment.project + ' created!')
             }
         },
         components: {

@@ -35,6 +35,9 @@ document.addEventListener('turbolinks:load', () => {
                 console.log('dismissed alert')
                 this.errors.splice(index, 1)
 
+            },
+            addSuccess(message) {
+                this.success = message
             }
         },
         created: function () {
