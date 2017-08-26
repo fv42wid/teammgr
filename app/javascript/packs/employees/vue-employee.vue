@@ -11,11 +11,11 @@
                         </v-flex>
                         <v-flex xs12 sm4>
                             <v-progress-circular :size="75"
-                                                 :width="10"
+                                                 :width="12"
                                                  :value="sumAllocation"
                                                  :rotate="-90"
-                                                 class="primary--text">
-                                {{ sumAllocation }}
+                                                 :class="allocationColor">
+                                {{ sumAllocation }}%
                             </v-progress-circular>
                         </v-flex>
                     </v-layout>
@@ -89,6 +89,13 @@
                 return this.assignments.reduce(function(a, b){
                     return b['allocation_percentage'] == null ? a : a + b['allocation_percentage']
                 }, 0)
+            },
+            allocationColor() {
+                if(this.sumAllocation < 80) {
+                    return 'red--text'
+                } else {
+                    return 'green--text'
+                }
             }
         },
         components: {
