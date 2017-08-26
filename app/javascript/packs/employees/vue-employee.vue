@@ -3,10 +3,23 @@
         <v-flex xs12 sm6 offset-sm3>
             <v-card class="mb-2">
                 <v-card-title primary-title>
-                    <div>
-                        <h5>{{ employee.fname }} {{ employee.lname }}</h5>
-                        <div>{{ employee.position }}</div>
-                    </div>
+                    <v-container fill-width fluid>
+                    <v-layout row wrap>
+                        <v-flex xs12 sm8>
+                            <h5>{{ employee.fname }} {{ employee.lname }}</h5>
+                            <div>{{ employee.position }}</div>
+                        </v-flex>
+                        <v-flex xs12 sm4>
+                            <v-progress-circular :size="75"
+                                                 :width="10"
+                                                 :value="sumAllocation"
+                                                 :rotate="-90"
+                                                 class="primary--text">
+                                {{ sumAllocation }}
+                            </v-progress-circular>
+                        </v-flex>
+                    </v-layout>
+                    </v-container>
                 </v-card-title>
                 <v-card-actions>
                     <v-btn flat class="orange--text" @click="createAssignment()">Create Assignment</v-btn>
@@ -41,6 +54,7 @@
 
 <script>
     import AssignmentNew from '../assignments/vue-assignment-new.vue'
+    import VProgressCircular from "vuetify/src/components/progress/VProgressCircular";
 
     export default {
         data: function() {
@@ -54,7 +68,8 @@
         props: ['card', 'empassignments'],
         mounted() {
             console.log(this.employee + ' created')
-            console.log(this.assignments)
+            //console.log(this.assignments)
+            //console.log(this.sumAllocation(this.assignments))
         },
         methods: {
             createAssignment() {
@@ -62,12 +77,22 @@
                 this.creatingAssignment = !this.creatingAssignment
             },
             addAssignment(assignment) {
+                assignment.allocation_percentage = parseInt(assignment.allocation_percentage)
                 this.assignments.push(assignment)
                 this.creatingAssignment = false
                 this.$emit('addsuccess', assignment.project + ' created!')
             }
+
+        },
+        computed: {
+            sumAllocation() {
+                return this.assignments.reduce(function(a, b){
+                    return b['allocation_percentage'] == null ? a : a + b['allocation_percentage']
+                }, 0)
+            }
         },
         components: {
+            VProgressCircular,
             'new-assignment' : AssignmentNew
         },
         filters: {
