@@ -42,7 +42,10 @@ document.addEventListener('turbolinks:load', () => {
         },
         created: function () {
             console.log('main vue created')
-            this.success.push(document.getElementById('flash-div').getAttribute('data-flash'))
+            if(document.getElementById('flash-div').getAttribute('data-flash') !== null) {
+                this.success.push(document.getElementById('flash-div').getAttribute('data-flash'))
+            }
+
         },
         /*computed: {
             errors() {

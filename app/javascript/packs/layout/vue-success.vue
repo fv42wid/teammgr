@@ -2,8 +2,7 @@
     <v-snackbar :info="true"
                 :right="true"
                 v-model="show"
-                :timeout="timeout"
-                :vertical="true">
+                :timeout="timeout">
         {{ message }}
         <v-btn dark flat @click="show = false">Close</v-btn>
     </v-snackbar>
@@ -16,7 +15,7 @@
             return {
                 timeout: 6000,
                 x: 'right',
-                show: this.snackbar
+                show: false
             }
         },
         watch: {
@@ -26,6 +25,9 @@
         },
         created: function() {
             console.log('snackbar created')
+        },
+        mounted: function() {
+            this.show = true
         }
     }
 </script>
