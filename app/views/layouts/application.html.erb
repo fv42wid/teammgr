@@ -79,7 +79,9 @@
           <%= yield %>
         </v-container>
       </main>
-      <vue-success :message="success" :snackbar="success !== null"></vue-success>
+      <div v-for="(message, index) in success" :key="index">
+        <vue-success :message="message" :snackbar="message !== null"></vue-success>
+      </div>
     </v-app>
   </body>
 </html>

@@ -28,7 +28,7 @@ document.addEventListener('turbolinks:load', () => {
         data: {
             sideNav: false,
             errors: [],
-            success: null
+            success: []
         },
         methods: {
             onDismissed(index) {
@@ -37,12 +37,12 @@ document.addEventListener('turbolinks:load', () => {
 
             },
             addSuccess(message) {
-                this.success = message
+                this.success.push(message)
             }
         },
         created: function () {
             console.log('main vue created')
-            this.success = document.getElementById('flash-div').getAttribute('data-flash')
+            this.success.push(document.getElementById('flash-div').getAttribute('data-flash'))
         },
         /*computed: {
             errors() {
